@@ -16,8 +16,9 @@
 				opacity: 1,
 				fillOpacity: 0.7
 			},
-			summaryTemplate: '<h2>{name}</h2><h3>{distance}, {time}</h3>',
-			timeTemplate: '{time}',
+			summaryTemplate: '<h2>{name}</h2><h3>{distance}, {time}, {weight}</h3>',
+                        timeTemplate: '{time}',
+                        weightTemplate: '{weight}',
 			containerClassName: '',
 			alternativeClassName: '',
 			minimizedClassName: '',
@@ -113,7 +114,8 @@
 				data = L.extend({
 					name: alt.name,
 					distance: this._formatter.formatDistance(alt.summary.totalDistance, this.options.totalDistanceRoundingSensitivity),
-					time: this._formatter.formatTime(alt.summary.totalTime)
+					time: this._formatter.formatTime(alt.summary.totalTime),
+                                        weight: this._formatter.formatTime(alt.summary.totalTime),
 				}, alt);
 			altDiv.innerHTML = typeof(template) === 'function' ? template(data) : L.Util.template(template, data);
 			L.DomEvent.addListener(altDiv, 'click', this._onAltClicked, this);
